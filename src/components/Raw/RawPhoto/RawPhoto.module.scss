@@ -1,0 +1,183 @@
+@import "../../../styles/convert";
+
+.RawPhoto {
+  position: relative;
+  width: 100vw;
+  min-height: 100vh;
+  background-color: var(--color-violet);
+  padding: vw(177.91) vw(20) vw(200);
+}
+
+.User {
+  position: relative;
+  width: 100%;
+  height: vw(2740);
+  overflow: hidden;
+
+  &::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: vw(1055);
+    height: vw(2287);
+    background-color: var(--color-violet);
+    z-index: 9998;
+    pointer-events: none;
+  }
+}
+
+.UserItem {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  pointer-events: none;
+  z-index: 9999;
+  transition: opacity 0.5s ease 0s;
+}
+
+.Active {
+  opacity: 1;
+}
+
+.Name {
+  position: relative;
+  z-index: 2;
+  width: 100vw;
+  margin-bottom: vw(244.09);
+  text-align: center;
+  text-transform: uppercase;
+  font-weight: 400;
+  color: var(--color-white);
+  font-size: vw(174.49);
+  background-color: var(--color-violet);
+  font-family: "Podkova", serif;
+}
+
+.WrapPhoto {
+  position: relative;
+  width: vw(1055);
+  height: vw(2287);
+  margin: 0 auto;
+  background-color: var(--color-violet);
+  border-radius: vw(94);
+  overflow: hidden;
+  z-index: 1;
+
+  & img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 1;
+  }
+}
+
+.Photo {
+  position: absolute;
+  overflow: hidden;
+
+  &::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 99;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, #ef78f7 25%, #f782ff 50%, #ef78f7 75%);
+    background-size: 200% 100%;
+    animation: loading 1.5s infinite;
+    transition: opacity 0.3s ease 0s;
+  }
+}
+
+.PhotoLoaded {
+  &::after {
+    opacity: 0;
+    animation-play-state: paused;
+  }
+}
+
+.Big {
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+}
+
+.Min {
+  top: vw(146);
+  left: vw(67);
+  z-index: 3;
+  width: vw(372.06);
+  height: vw(507.36);
+  border-radius: vw(45.1);
+  border: vw(1) solid var(--color-black);
+}
+
+.Animation {
+  position: absolute;
+  top: vw(1372.32);
+  left: 0;
+  width: 100%;
+  z-index: 1;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  grid-gap: vw(75);
+}
+
+.Scroll {
+  display: flex;
+  flex-wrap: nowrap;
+  grid-gap: vw(122);
+}
+
+.Left {
+  animation: scroll-left 20s linear infinite alternate;
+}
+
+.Right {
+  flex-direction: row-reverse;
+  animation: scroll-right 20s linear infinite alternate;
+}
+
+.Icon {
+  min-width: vw(446.059);
+  height: vw(133.358);
+}
+
+@keyframes loading {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+@keyframes scroll-left {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+@keyframes scroll-right {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}

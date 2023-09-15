@@ -1,0 +1,48 @@
+{
+  "usesTypeScript": false,
+  "usesCssModule": false,
+  "cssPreprocessor": "scss",
+  "testLibrary": false,
+  "component": {
+    "default": {
+      "customTemplates": {
+        "component": "templates/default/TemplateName.jsx",
+        "index": "templates/default/index.js",
+        "style": "templates/default/TemplateName.module.scss"
+      },
+      "path": "src/components",
+      "withLazy": false,
+      "withStory": false,
+      "withStyle": true,
+      "withTest": false,
+      "withIndex": true
+    },
+    "magnet": {
+      "customTemplates": {
+        "component": "templates/default/TemplateName.jsx",
+        "index": "templates/default/index.js",
+        "style": "templates/default/TemplateName.module.scss"
+      },
+      "path": "src/components/Magnet",
+      "withLazy": false,
+      "withStory": false,
+      "withStyle": true,
+      "withTest": false,
+      "withIndex": true
+    },
+    "raw": {
+      "customTemplates": {
+        "component": "templates/default/TemplateName.jsx",
+        "index": "templates/default/index.js",
+        "style": "templates/default/TemplateName.module.scss"
+      },
+      "path": "src/components/Raw",
+      "withLazy": false,
+      "withStory": false,
+      "withStyle": true,
+      "withTest": false,
+      "withIndex": true
+    }
+  },
+  "usesStyledComponents": true
+}
