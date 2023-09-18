@@ -12,7 +12,7 @@ const Controller = () => {
     { id: "3", active: "0", component: "sdg", showTime: "1000", queue: "3" },
     { id: "4", active: "0", component: "flur1", showTime: "1000", queue: "4" },
     { id: "5", active: "0", component: "flur2", showTime: "1000", queue: "5" },
-    { id: "6", active: "1", component: "flur3", showTime: "2000", queue: "6" },
+    { id: "6", active: "0", component: "flur3", showTime: "1000", queue: "6" },
     { id: "7", active: "1", component: "magnet-photo", showTime: "60000", queue: "7" },
     { id: "8", active: "0", component: "magnet-video", showTime: "1000", queue: "8" },
     { id: "9", active: "0", component: "eva", showTime: "1000", queue: "9" },
