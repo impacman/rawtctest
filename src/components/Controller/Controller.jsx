@@ -5,21 +5,21 @@ const Controller = () => {
   const time = 60000;
   const [currentQueue, setCurrentQueue] = useState(1);
   const [pacmanData, setPacmanData] = useState([
-    { id: "1", active: "1", component: "raw-photo", showTime: "2000", queue: "1" },
-    { id: "2", active: "1", component: "raw-video", showTime: "2000", queue: "2" },
-    { id: "3", active: "1", component: "sdg", showTime: "2000", queue: "3" },
-    { id: "4", active: "1", component: "flur1", showTime: "2000", queue: "4" },
-    { id: "5", active: "1", component: "flur2", showTime: "2000", queue: "5" },
-    { id: "6", active: "1", component: "flur3", showTime: "2000", queue: "6" },
-    { id: "7", active: "1", component: "magnet-photo", showTime: "60000", queue: "7" },
-    { id: "8", active: "1", component: "magnet-video", showTime: "2000", queue: "8" },
-    { id: "9", active: "1", component: "eva", showTime: "2000", queue: "9" },
+    // { id: "1", active: "1", component: "raw-photo", showTime: "2000", queue: "1" },
+    // { id: "2", active: "1", component: "raw-video", showTime: "2000", queue: "2" },
+    // { id: "3", active: "1", component: "sdg", showTime: "2000", queue: "3" },
+    // { id: "4", active: "1", component: "flur1", showTime: "2000", queue: "4" },
+    // { id: "5", active: "1", component: "flur2", showTime: "2000", queue: "5" },
+    // { id: "6", active: "1", component: "flur3", showTime: "2000", queue: "6" },
+    // { id: "7", active: "1", component: "magnet-photo", showTime: "60000", queue: "7" },
+    // { id: "8", active: "1", component: "magnet-video", showTime: "2000", queue: "8" },
+    // { id: "9", active: "1", component: "eva", showTime: "2000", queue: "9" },
   ]);
   const [newData, setNewData] = useState([]);
 
   const fetchData = async () => {
     try {
-      const response = await fetch("https://sheetdb.io/api/v1/xy1onrfio45158x8j4z2");
+      const response = await fetch("https://sheetdb.io/api/v1/y6dpub5m52n5e");
       if (!response.ok) {
         throw new Error("Ошибка запроса к серверу");
       }
@@ -30,12 +30,12 @@ const Controller = () => {
     }
   };
 
-  // useEffect(() => {
-  //   fetchData();
+  useEffect(() => {
+    fetchData();
 
-  //   // const intervalId = setInterval(fetchData, time);
-  //   // return () => clearInterval(intervalId);
-  // }, []);
+    const intervalId = setInterval(fetchData, time);
+    return () => clearInterval(intervalId);
+  }, []);
 
   useEffect(() => {
     if (!pacmanData.length) return;
