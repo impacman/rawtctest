@@ -12,7 +12,7 @@ const Video = ({ active, name }) => {
 
   return (
     <div className={styled.Video}>
-      <video ref={videoRef} controls={false} loop autoPlay muted>
+      <video ref={videoRef} controls={false} loop autoPlay muted="muted" playsInline preload="auto">
         <source src={`/video/${name}.mp4`} type="video/mp4" />
         {/* <source src={`/video/${name}.webm`} type="video/webm" /> */}
       </video>

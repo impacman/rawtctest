@@ -2,9 +2,9 @@ import React, { useState, useEffect } from "react";
 import styled from "./RawPhoto.module.scss";
 import animation from "../../Animation.module.scss";
 import Logo from "../Logo/Logo";
+import Users from "./Users";
 
 const logos = [1, 2, 3, 4, 5, 6, 7, 8];
-const userChangeTime = 10000;
 
 const users = [
   {
@@ -139,59 +139,26 @@ const users = [
   },
 ];
 
-const RawPhoto = ({ active }) => {
-  const [activeIndex, setActiveIndex] = useState(0);
-  const [isLoading, setIsLoading] = useState(false); // Добавляем состояние для отслеживания загрузки изображений
-
-  useEffect(() => {
-    if (active && isLoading) {
-      const intervalId = setInterval(() => {
-        setActiveIndex((prevIndex) => (prevIndex + 1) % users.length);
-      }, userChangeTime);
-
-      return () => clearInterval(intervalId);
-    }
-  }, [active, isLoading]);
-
-  const handleImageLoad = (evt) => {
-    setIsLoading(true);
-  };
-
-  return (
-    <div className={`${styled.RawPhoto} ${active ? animation.Active : animation.NoActive}`}>
-      <div className={styled.Animation}>
-        <div className={`${styled.Scroll} ${styled.Left}`}>
-          {logos.map((el) => (
-            <div key={el} className={styled.Icon}>
-              <Logo />
-            </div>
-          ))}
-        </div>
-        <div className={`${styled.Scroll} ${styled.Right}`}>
-          {logos.map((el) => (
-            <div key={el} className={styled.Icon}>
-              <Logo />
-            </div>
-          ))}
-        </div>
+const RawPhoto = ({ active }) => (
+  <div className={`${styled.RawPhoto} ${active ? animation.Active : animation.NoActive}`}>
+    <div className={styled.Animation}>
+      <div className={`${styled.Scroll} ${styled.Left}`}>
+        {logos.map((el) => (
+          <div key={el} className={styled.Icon}>
+            <Logo />
+          </div>
+        ))}
       </div>
-      <div className={styled.User}>
-        {users.map((user, index) => (
-          <div key={user.userId} className={`${styled.UserItem} ${index === activeIndex ? styled.Active : ""}`}>
-            <div className={styled.Name}>{user.name}</div>
-            <div className={styled.WrapPhoto}>
-              <div className={`${styled.Photo} ${styled.Big} ${isLoading ? styled.PhotoLoaded : ""}`}>
-                <img src={user.latestRawPhoto.primary.reference} alt="" onLoad={handleImageLoad} />
-              </div>
-              <div className={`${styled.Photo} ${styled.Min} ${isLoading ? styled.PhotoLoaded : ""}`}>
-                <img src={user.latestRawPhoto.secondary.reference} alt="" onLoad={handleImageLoad} />
-              </div>
-            </div>
+      <div className={`${styled.Scroll} ${styled.Right}`}>
+        {logos.map((el) => (
+          <div key={el} className={styled.Icon}>
+            <Logo />
           </div>
         ))}
       </div>
     </div>
-  );
-};
+    <Users active={active} />
+  </div>
+);
 
 export default RawPhoto;

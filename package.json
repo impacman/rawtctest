@@ -1,7 +1,7 @@
 {
   "name": "rawtc",
   "private": true,
-  "version": "0.0.0",
+  "version": "1.0.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -13,12 +13,11 @@
     "raw": "generate-react component --type=raw"
   },
   "dependencies": {
-    "axios": "^1.5.0",
+    "framer-motion": "^10.16.4",
     "generate-react-cli": "^8.3.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-responsive-carousel": "^3.2.23",
-    "swiper": "^10.2.0"
+    "react-responsive-carousel": "^3.2.23"
   },
   "devDependencies": {
     "@types/react": "^18.2.15",
