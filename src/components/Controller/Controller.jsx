@@ -101,7 +101,7 @@ const Controller = () => {
     return null;
   }
 
-  return activeComponents.map((item) => <ComponentDisplay key={item.component} component={item.component} nextComponent={nextActiveComponent && nextActiveComponent.component} />);
+  return activeComponents.map((item) => <ComponentDisplay key={item} component={item.component} nextComponent={nextActiveComponent && nextActiveComponent.component} />);
 };
 
 export default Controller;
