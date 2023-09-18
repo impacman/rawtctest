@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useLayoutEffect } from "react";
+import { useRef, useState, useEffect, useLayoutEffect } from "react";
 import { Carousel } from "react-responsive-carousel";
 import animation from "../../Animation.module.scss";
 import styled from "./MagnetPhoto.module.scss";
@@ -15,7 +15,7 @@ const mockData = [
   "https://f.mirror-ai.net/x/joVi37ls1lm3eAbk3tysiXKP6VvpYahekf_s70TrmoBGKCNNAbcSjJUaUx-sFufLO3shplXaxgNCSEztxl2gj_VjkcVWwLGZKq7alEMlQmYjxzEAV1JOcWZvzKcg7NTU?sz=1080",
 ];
 const MagnetPhoto = ({ active, nextActiveComponent }) => {
-  const carouselRef = React.useRef(null);
+  const carouselRef = useRef(null);
   const [users, setUsers] = useState([...mockData]);
   const [transitionTime, setTransitionTime] = useState(undefined);
   const [isLoading, setIsLoading] = useState(false); // Добавляем состояние для отслеживания загрузки изображений
@@ -29,19 +29,22 @@ const MagnetPhoto = ({ active, nextActiveComponent }) => {
     }
     const fetchData = async () => {
       try {
-        const response =
-            await fetch(new Request(`https://api.magnetapp.co/demo/crunch/bodies/list`, {
-              method: "GET",
-              headers: {
-                'content-type': 'application/json'
-              }
-            }));
+        const response = await fetch(
+          new Request(`https://api.magnetapp.co/demo/crunch/bodies/list`, {
+            method: "GET",
+            headers: {
+              "content-type": "application/json",
+            },
+          })
+        );
         const data = await response.json();
         if (!data || !data.Bodies) {
-          return
+          return;
         }
-        setUsers([...(data.Bodies|| []).reverse(), ...mockData]);
-      } catch (error) { console.warn('error')}
+        setUsers([...(data.Bodies || []).reverse(), ...mockData]);
+      } catch (error) {
+        console.warn("error");
+      }
     };
     fetchData();
   }, [nextActiveComponent]);
@@ -54,24 +57,24 @@ const MagnetPhoto = ({ active, nextActiveComponent }) => {
 
   useEffect(() => {
     setTransitionTime(active ? undefined : 0);
-  },[active])
+  }, [active]);
 
   return (
     <div className={`${styled.MagnetPhoto} ${active ? animation.Active : animation.NoActive}`}>
       <Carousel
-          ref={carouselRef}
-          dynamicHeight
-          className={styled.User}
-          showArrows={false}
-          showStatus={false}
-          showThumbs={false}
-          showIndicators={false}
-          infiniteLoop={true}
-          autoPlay={active}
-          selectedItem={active ? 0 : undefined}
-          interval={5000}
-          animationHandler={active ? 'slide' : 'none' }
-          transitionTime={transitionTime}
+        ref={carouselRef}
+        dynamicHeight
+        className={styled.User}
+        showArrows={false}
+        showStatus={false}
+        showThumbs={false}
+        showIndicators={false}
+        infiniteLoop={true}
+        autoPlay={active}
+        selectedItem={active ? 0 : undefined}
+        interval={5000}
+        animationHandler={active ? "slide" : "none"}
+        transitionTime={transitionTime}
       >
         {users.map((url) => (
           <div key={url} className={`${styled.UserItem} ${styled.Active}`}>

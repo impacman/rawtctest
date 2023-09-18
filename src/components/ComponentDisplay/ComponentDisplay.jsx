@@ -1,5 +1,3 @@
-import { motion } from "framer-motion";
-
 import RawPhoto from "../Raw/RawPhoto";
 import RawVideo from "../Raw/RawVideo";
 import Eva from "../Eva";
@@ -21,7 +19,7 @@ import N8 from "../New/N8";
 import N9 from "../New/N9";
 
 const ComponentDisplay = ({ component, nextComponent }) => (
-  <motion.div key={component} initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.7 }}>
+  <>
     <RawPhoto active={component === "raw-photo" ? true : false} />
     <RawVideo active={component === "raw-video" ? true : false} />
     <MagnetPhoto active={component === "magnet-photo" ? true : false} nextActiveComponent={nextComponent === "magnet-photo"} />
@@ -40,7 +38,7 @@ const ComponentDisplay = ({ component, nextComponent }) => (
     <N7 active={component === "new7" ? true : false} />
     <N8 active={component === "new8" ? true : false} />
     <N9 active={component === "new9" ? true : false} />
-  </motion.div>
+  </>
 );
 
 export default ComponentDisplay;

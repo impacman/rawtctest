@@ -1,4 +1,3 @@
-import React, { useState, useEffect } from "react";
 import styled from "./RawPhoto.module.scss";
 import animation from "../../Animation.module.scss";
 import Logo from "../Logo/Logo";

@@ -1,27 +1,25 @@
 import { useState, useEffect } from "react";
-import { AnimatePresence } from "framer-motion";
-
 import ComponentDisplay from "../ComponentDisplay";
 
 const Controller = () => {
   const time = 60000;
   const [currentQueue, setCurrentQueue] = useState(1);
   const [pacmanData, setPacmanData] = useState([
-    { id: "1", active: "0", component: "raw-photo", showTime: "1000", queue: "1" },
-    { id: "2", active: "0", component: "raw-video", showTime: "1000", queue: "2" },
-    { id: "3", active: "0", component: "sdg", showTime: "1000", queue: "3" },
-    { id: "4", active: "0", component: "flur1", showTime: "1000", queue: "4" },
-    { id: "5", active: "0", component: "flur2", showTime: "1000", queue: "5" },
-    { id: "6", active: "0", component: "flur3", showTime: "1000", queue: "6" },
+    { id: "1", active: "1", component: "raw-photo", showTime: "2000", queue: "1" },
+    { id: "2", active: "1", component: "raw-video", showTime: "2000", queue: "2" },
+    { id: "3", active: "1", component: "sdg", showTime: "2000", queue: "3" },
+    { id: "4", active: "1", component: "flur1", showTime: "2000", queue: "4" },
+    { id: "5", active: "1", component: "flur2", showTime: "2000", queue: "5" },
+    { id: "6", active: "1", component: "flur3", showTime: "2000", queue: "6" },
     { id: "7", active: "1", component: "magnet-photo", showTime: "60000", queue: "7" },
-    { id: "8", active: "0", component: "magnet-video", showTime: "1000", queue: "8" },
-    { id: "9", active: "0", component: "eva", showTime: "1000", queue: "9" },
+    { id: "8", active: "1", component: "magnet-video", showTime: "2000", queue: "8" },
+    { id: "9", active: "1", component: "eva", showTime: "2000", queue: "9" },
   ]);
   const [newData, setNewData] = useState([]);
 
   const fetchData = async () => {
     try {
-      const response = await fetch("https://sheetdb.io/api/v1/xy1onio45158x8j4z2");
+      const response = await fetch("https://sheetdb.io/api/v1/xy1onrfio45158x8j4z2");
       if (!response.ok) {
         throw new Error("Ошибка запроса к серверу");
       }
@@ -103,11 +101,7 @@ const Controller = () => {
     return null;
   }
 
-  return activeComponents.map((item) => (
-    <AnimatePresence key={item.id}>
-      <ComponentDisplay component={item.component} nextComponent={nextActiveComponent && nextActiveComponent.component} />
-    </AnimatePresence>
-  ));
+  return activeComponents.map((item) => <ComponentDisplay component={item.component} nextComponent={nextActiveComponent && nextActiveComponent.component} />);
 };
 
 export default Controller;
